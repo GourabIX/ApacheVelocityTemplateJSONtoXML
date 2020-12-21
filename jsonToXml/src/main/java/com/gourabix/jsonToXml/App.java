@@ -1,10 +1,15 @@
 package com.gourabix.jsonToXml;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.StringWriter;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
+
+import com.gourabix.jsonToXml.dto.PersonDTO;
 
 /**
  * @author Gourab Sarkar
@@ -13,6 +18,8 @@ import org.apache.velocity.app.VelocityEngine;
 
 public class App {
 	public static void main(String[] args) {
+
+		PersonDTO personDTO = new PersonDTO("Gourab Sarkar", "gourab.sarkar@email.com");
 
 		// first, get and initialize an engine
 		VelocityEngine velocityEngine = new VelocityEngine();
@@ -23,14 +30,24 @@ public class App {
 
 		// create a context and add data
 		VelocityContext context = new VelocityContext();
-		context.put("name", "Gourab");
+		context.put("person", personDTO);
 
 		// now render the template into a StringWriter
 		StringWriter writer = new StringWriter();
 		template.merge(context, writer);
 
 		// show the World
-		System.out.println(writer.toString());
+		try {
+			// the parent folder - "generated" must be created first!
+			BufferedWriter bufferedWriter = new BufferedWriter(
+					new FileWriter("target/generated/GeneratedPurchaseOrder.xml"));
+			bufferedWriter.write(writer.toString());
+			bufferedWriter.close();
+			System.out.println("File was written to disk successfully with values!");
+		} catch (IOException exception) {
+			System.err.println("File failed to be written to disk with values!");
+			exception.printStackTrace();
+		}
 
 	}
 }
