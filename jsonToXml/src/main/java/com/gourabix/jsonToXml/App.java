@@ -15,11 +15,11 @@ public class App {
 	public static void main(String[] args) {
 
 		// first, get and initialize an engine
-		VelocityEngine ve = new VelocityEngine();
-		ve.init();
+		VelocityEngine velocityEngine = new VelocityEngine();
+		velocityEngine.init();
 
 		// next, get the Template
-		Template t = ve.getTemplate("src/main/resources/HelloApacheVelocity.vm");
+		Template template = velocityEngine.getTemplate("src/main/resources/HelloApacheVelocity.vm");
 
 		// create a context and add data
 		VelocityContext context = new VelocityContext();
@@ -27,7 +27,7 @@ public class App {
 
 		// now render the template into a StringWriter
 		StringWriter writer = new StringWriter();
-		t.merge(context, writer);
+		template.merge(context, writer);
 
 		// show the World
 		System.out.println(writer.toString());
