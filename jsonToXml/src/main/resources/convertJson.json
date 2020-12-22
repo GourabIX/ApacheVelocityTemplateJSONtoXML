@@ -1,4 +1,9 @@
 {
-  "name": "JSON-Gourab",
-  "email": "json-gourab@example.com"
+  "name": "Gourab Sarkar",
+  "email": "gourab.sarkar@example.com",
+  "address": {
+    "city": "Kolkata",
+    "country": "India",
+    "planet": "Earth"
+  }
 }

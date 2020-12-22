@@ -11,6 +11,10 @@
    	<xsd:documentation>$person.getName()</xsd:documentation>
    <xsd:element name="EmailTo" type="tns:USAddress" maxOccurs="2"/>
    	<xsd:documentation>$person.email</xsd:documentation>
+   <xsd:element name="DestinationAddress" type="tns:USAddress" maxOccurs="2"/>
+   	<xsd:documentation>$person.address.city</xsd:documentation>
+   	<xsd:documentation>$person.address.country</xsd:documentation>
+   	<xsd:documentation>$person.address.planet</xsd:documentation>
   </xsd:sequence>
   <xsd:attribute name="OrderDate" type="xsd:date"/>
  </xsd:complexType>

@@ -16,13 +16,16 @@ public class PersonDTO implements Serializable {
 	
 	private String email;
 	
+	private AddressDTO address;
+	
 	public PersonDTO() {
 		// This default constructor remains for the purpose of serialization.
 	}
 
-	public PersonDTO(String name, String email) {
+	public PersonDTO(String name, String email, AddressDTO address) {
 		this.name = name;
 		this.email = email;
+		this.address = address;
 	}
 
 	public String getName() {
@@ -39,6 +42,14 @@ public class PersonDTO implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public AddressDTO getAddress() {
+		return address;
+	}
+
+	public void setAddress(AddressDTO address) {
+		this.address = address;
 	}
 
 }
