@@ -12,9 +12,21 @@
    <xsd:element name="EmailTo" type="tns:USAddress" maxOccurs="2"/>
    	<xsd:documentation>$person.email</xsd:documentation>
    <xsd:element name="DestinationAddress" type="tns:USAddress" maxOccurs="2"/>
+   #if ($person.address.city)
    	<xsd:documentation>$person.address.city</xsd:documentation>
+   #else
+   	<xsd:documentation>NOTHING HERE!</xsd:documentation>
+   #end
+   #if ($person.address.country)
    	<xsd:documentation>$person.address.country</xsd:documentation>
+   #else
+    <xsd:documentation>EMPTY</xsd:documentation>
+   #end
+   #if ($person.address.planet)
    	<xsd:documentation>$person.address.planet</xsd:documentation>
+   #else
+    <xsd:documentation></xsd:documentation>
+   #end
   </xsd:sequence>
   <xsd:attribute name="OrderDate" type="xsd:date"/>
  </xsd:complexType>

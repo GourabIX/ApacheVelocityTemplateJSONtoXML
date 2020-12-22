@@ -2,7 +2,7 @@
   "name": "Gourab Sarkar",
   "email": "gourab.sarkar@example.com",
   "address": {
-    "city": "Kolkata",
+    "city": null,
     "country": "India",
     "planet": "Earth"
   }
