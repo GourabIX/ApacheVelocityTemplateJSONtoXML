@@ -1,6 +1,7 @@
 package com.gourabix.jsonToXml;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
@@ -9,6 +10,7 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gourabix.jsonToXml.dto.PersonDTO;
 
 /**
@@ -19,7 +21,15 @@ import com.gourabix.jsonToXml.dto.PersonDTO;
 public class App {
 	public static void main(String[] args) {
 
-		PersonDTO personDTO = new PersonDTO("Gourab Sarkar", "gourab.sarkar@email.com");
+		ObjectMapper mapper = new ObjectMapper();
+		PersonDTO personDTO = null;
+
+		try {
+			personDTO = mapper.readValue(new File("src/main/resources/convertJson.json"), PersonDTO.class);
+		} catch (IOException exception) {
+			System.err.println("Could not read JSON file!");
+			exception.printStackTrace();
+		}
 
 		// first, get and initialize an engine
 		VelocityEngine velocityEngine = new VelocityEngine();
